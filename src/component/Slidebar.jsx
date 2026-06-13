@@ -22,20 +22,24 @@ const Slidbar = () => {
             console.log(error)
         }
     }, []);
+    
     return (
         <div className='main-sidebar'>
-            <ul className='side-main p-0 m-0'>
+            <ul className='list-group border-0'>
+
                 {
                     data?.map((item, index) => {
                         return (
-                            <li key={index} className='side-menu'>
-                                <button className='nav-link cat-item border-0 bg-transparent'>
+                            <li key={index} className='list-group-item border-0 px-0 py-2'  >
+
+                                <button className='btn btn-light w-100 text-start rounded-pill px-3 fw-semibold'  >
                                     {item}
                                 </button>
                             </li>
                         )
                     })
                 }
+
             </ul>
         </div>
     )

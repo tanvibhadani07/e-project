@@ -74,9 +74,10 @@
 .hion:hover {
     filter: blur(2px);
     transition: 1s;
-  
+
 }
 
 .body {
     padding-top: 70px;
 }
+
