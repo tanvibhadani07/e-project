@@ -9,10 +9,11 @@ const Cart = () => {
 
 
     return (
-        <div className='container'>
-            <div className='text-center'>
-                <table className="table table-danger table-striped">
-                    <thead>
+        <div className='container mt-4'>
+            <div className='bg-light rounded shadow-sm p-3'>
+
+                <table className="table table-light table-hover text-center align-middle">
+                    <thead className="table-secondary">
                         <tr>
                             <th scope='col'>No.</th>
                             <th scope='col'>Image</th>
@@ -21,59 +22,79 @@ const Cart = () => {
                             <th scope='col'>Amount</th>
                         </tr>
                     </thead>
+
                     <tbody>
                         {
                             orders?.cartData.map((item, index) => {
-                                return <tr key={index}>
-                                    <th className='col-1' scope="row">{index + 1}</th>
-                                    <td className='col-2'>
-                                        <div className=' p-2'>
+                                return (
+                                    <tr key={index}>
+                                        <th className='col-1'>{index + 1}</th>
 
-                                            <img src={item.thumbnail} className='img-fluid w-50' alt="" />
+                                        <td className='col-2'>
+                                            <img
+                                                src={item.thumbnail}
+                                                className='img-fluid'
+                                                style={{ width: "80px" }}
+                                                alt=""
+                                            />
+                                        </td>
 
-                                        </div>
-                                    </td>
-                                    <td className='col-3'>{item.title}</td>
-                                    <td className='col-2'>1</td>
-                                    <td className='col-2'>${Math.round(item.price)}</td>
-                                    {/* <td>{orders.amount}</td>
-                                   <td>{orders.c_gst_9}</td>
-                                   <td>{orders.s_gst_9}</td>
-                                   <td>{orders.Total}</td> */}
-
-                                </tr>
-
-
+                                        <td className='col-3'>{item.title}</td>
+                                        <td className='col-2'>1</td>
+                                        <td className='col-2'>
+                                            ${Math.round(item.price)}
+                                        </td>
+                                    </tr>
+                                )
                             })
                         }
 
                         <tr>
-                            <td colSpan={4}>Amount </td>
-                            <td ><b> ${orders.amount}</b></td>
+                            <td colSpan={4} className='text-end fw-bold'>
+                                Amount
+                            </td>
+                            <td>
+                                <b>${orders.amount}</b>
+                            </td>
                         </tr>
+
                         <tr>
-                            <td colSpan={4}>C-GST% </td>
-                            <td><span>${orders.c_gst_9}</span></td>
+                            <td colSpan={4} className='text-end fw-bold'>
+                                C-GST%
+                            </td>
+                            <td>${orders.c_gst_9}</td>
                         </tr>
+
                         <tr>
-                            <td colSpan={4}> S-GST% </td>
-                            <td><span>${orders.s_gst_9}</span></td>
+                            <td colSpan={4} className='text-end fw-bold'>
+                                S-GST%
+                            </td>
+                            <td>${orders.s_gst_9}</td>
                         </tr>
+
                         <tr>
-                            <td colSpan={4}>Total </td>
-                            <td><b>  ${orders.Total}</b></td>
+                            <td colSpan={4} className='text-end fw-bold'>
+                                Total
+                            </td>
+                            <td>
+                                <b>${orders.Total}</b>
+                            </td>
                         </tr>
-                        <tr>
-                            <td colSpan={4}><b>Total in INR</b> </td>
-                            <td><b>   ₹{orders.inr}</b></td>
+
+                        <tr >
+                            <td colSpan={4} className='text-end fw-bold'>
+                                Total in INR
+                            </td>
+                            <td>
+                                <b>₹{orders.inr}</b>
+                            </td>
                         </tr>
 
                     </tbody>
                 </table>
+
             </div>
-
         </div>
-
     )
 }
 
