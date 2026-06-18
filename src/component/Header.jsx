@@ -1,11 +1,12 @@
 import React from 'react'
-import { BsCart3 } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useSelector } from 'react-redux';
 import { RiBlueskyFill } from "react-icons/ri";
-
-
+import { CiHome } from "react-icons/ci";
+import { CiUser } from "react-icons/ci";
+import { CiShoppingCart } from "react-icons/ci";
+import { CiSearch } from "react-icons/ci";
 
 const Header = () => {
 
@@ -24,26 +25,34 @@ const Header = () => {
                         <span className="navbar-toggler-icon"></span>
                     </button>
 
+
+
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <Link className="nav-link active" aria-current="page" to="/">Home</Link>
+                                <Link className="nav-link active" aria-current="page" to=""><CiSearch className='iconfix' /></Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link active" aria-current="page" to="/"><  CiHome className='iconfix' /></Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link active" aria-current="page" to="/profile"><CiUser className='iconfix' /></Link>
                             </li>
                             <li className="nav-item position-relative">
+                                <Link to="/cart" className="nav-link d-flex  position-relative"  >
+                                    <CiShoppingCart className="iconfix" style={{ position: "relative", top: "2px" }} />
 
-
-                                <Link to="/cart" className="nav-link active position-relative"  style={{ display: "inline-flex", alignItems: "center",  gap: "2px"  }}  >
-                                    Cart <BsCart3 size={17} />
-                                    {
-                                        cartData?.length > 0 && (
-                                            <span  className="position-absolute badge rounded-pill bg-danger" style={{  top: "-0px", right: "-11px", fontSize: "11px"  }}>
-                                                {cartData.length}
-                                            </span>
-                                        )
-                                    }
-
+                                    {cartData?.length > 0 && (
+                                        <span className="position-absolute badge rounded-pill bg-danger"
+                                            style={{
+                                                top: "2px",
+                                                right: "-8px",
+                                                fontSize: "10px"
+                                            }}   >
+                                            {cartData.length}
+                                        </span>
+                                    )}
                                 </Link>
-
                             </li>
                         </ul>
                     </div>

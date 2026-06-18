@@ -3,9 +3,9 @@ import Home from "./component/Home";
 import Header from "./component/Header";
 import Cart from "./component/Cart";
 import { Routes, Route, useLocation } from "react-router-dom";
-
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import Profile from "./component/Profile";
 
 function App() {
 
@@ -17,7 +17,7 @@ function App() {
 
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 1500);
+    }, 800);
 
     return () => clearTimeout(timer);
   }, [location]);
@@ -38,6 +38,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
 
     </div>
