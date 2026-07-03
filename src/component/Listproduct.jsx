@@ -4,11 +4,17 @@ import { FaBagShopping } from "react-icons/fa6";
 import { FaStar } from "react-icons/fa";
 import { useDispatch } from 'react-redux';
 import { addTocart } from '../cart/cartSlice';
+import { addToLike } from '../cart/likeSlice';
+import { FaHeart } from "react-icons/fa";
 
 const Listproduct = ({ category }) => {
 
     const dispatch = useDispatch();
     const [data, setData] = useState([]);
+
+    function saveToLike(product) {
+        dispatch(addToLike(product));
+    }
 
     function savetocart(products) {
         dispatch(addTocart(products));
@@ -103,13 +109,14 @@ const Listproduct = ({ category }) => {
                                     </div>
                                 </div>
 
-                                <div>
-                                    <button
-                                        className='btn btn-outline-dark w-100 mt-3'
-                                        onClick={() => savetocart(item)}
-                                    >
+                                <div className='d-flex gap-2 '>
+                                    <button className='btn btn-outline-dark w-50 mt-3 py-1 ' onClick={() => savetocart(item)}  >
                                         Add To Cart
                                         <FaBagShopping className='mx-1' />
+                                    </button>
+                                    <button className='btn btn-outline-dark w-50 mt-3 py-1' onClick={() => saveToLike(item)} >
+                                        Like
+                                        <FaHeart className='mx-1' />
                                     </button>
                                 </div>
 

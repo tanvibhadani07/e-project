@@ -7,11 +7,12 @@ import { CiHome } from "react-icons/ci";
 import { CiUser } from "react-icons/ci";
 import { CiShoppingCart } from "react-icons/ci";
 import { CiSearch } from "react-icons/ci";
+import { CiHeart } from "react-icons/ci";
 
 const Header = () => {
 
     const cartData = useSelector((state) => state.cart.cartData);
-
+    const likeData = useSelector((state) => state.like.likeData);
     return (
 
         <div className="body">
@@ -29,15 +30,36 @@ const Header = () => {
 
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-                            <li className="nav-item">
-                                <Link className="nav-link active" aria-current="page" to=""><CiSearch className='iconfix' /></Link>
-                            </li>
+
+
                             <li className="nav-item">
                                 <Link className="nav-link active" aria-current="page" to="/"><  CiHome className='iconfix' /></Link>
                             </li>
+
                             <li className="nav-item">
                                 <Link className="nav-link active" aria-current="page" to="/profile"><CiUser className='iconfix' /></Link>
                             </li>
+
+                            <li className="nav-item">
+                                <Link className="nav-link active" aria-current="page" to=""><CiSearch className='iconfix' /></Link>
+                            </li>
+
+                            <li className="nav-item position-relative">
+
+                                <Link className="nav-link active position-relative" to="/like">
+                                    <CiHeart className='iconfix' />
+                                    {likeData.length > 0 &&
+                                        <span
+                                            className="position-absolute badge rounded-pill bg-danger"
+                                            style={{ top: "2px", right: "-8px", fontSize: "10px" }}  >
+                                            {likeData.length}
+                                        </span>
+                                    }
+                                </Link>
+                            </li>
+
+
+
                             <li className="nav-item position-relative">
                                 <Link to="/cart" className="nav-link d-flex  position-relative"  >
                                     <CiShoppingCart className="iconfix" style={{ position: "relative", top: "2px" }} />
@@ -54,6 +76,8 @@ const Header = () => {
                                     )}
                                 </Link>
                             </li>
+
+
                         </ul>
                     </div>
                 </div>
